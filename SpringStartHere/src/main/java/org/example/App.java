@@ -14,8 +14,11 @@ public class App {
         //Parrot parrot = context.getBean(Parrot.class);
         Parrot parrot = context.getBean("parrot", Parrot.class);
         Parrot parrot2 = context.getBean("parrot2", Parrot.class);
+        Parrot parrot3 = context.getBean("riki", Parrot.class);
+
         System.out.println( parrot.getName() );
         System.out.println( parrot2.getName() );
+        System.out.println( parrot3.getName() );
 
         String s = context.getBean(String.class);
         System.out.println(s);

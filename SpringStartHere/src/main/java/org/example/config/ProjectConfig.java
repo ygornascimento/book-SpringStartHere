@@ -30,7 +30,7 @@ public class ProjectConfig {
         return p;
     }
 
-    @Bean
+    @Bean(name = "riki")
     Parrot parrot3() {
         var p = new Parrot();
         p.setName( "Riki" );
