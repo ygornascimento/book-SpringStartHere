@@ -13,7 +13,7 @@ public class Parrot {
 
     @PostConstruct
     public void init() {
-        this.name = "Kiki";
+        this.name = "Kiki from here";
     }
 
     public String getName() {
