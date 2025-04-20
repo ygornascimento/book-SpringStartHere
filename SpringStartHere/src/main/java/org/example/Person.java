@@ -1,7 +1,8 @@
 package org.example;
 
-public class Parrot {
+public class Person {
     private String name;
+    private Parrot parrot;
 
     public String getName() {
         return name;
@@ -11,8 +12,11 @@ public class Parrot {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Parrot : " + name;
+    public Parrot getParrot() {
+        return parrot;
+    }
+
+    public void setParrot(Parrot parrot) {
+        this.parrot = parrot;
     }
 }
