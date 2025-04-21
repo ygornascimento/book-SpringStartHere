@@ -11,10 +11,10 @@ import java.util.function.Supplier;
  */
 public class App {
     public static void main( String[] args ) {
-        var context  = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        var springContext  = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        Person person = context.getBean(Person.class);
-        Parrot parrot = context.getBean(Parrot.class);
+        Person person = springContext.getBean(Person.class);
+        Parrot parrot = springContext.getBean(Parrot.class);
 
         System.out.println("Person's name: " + person.getName());
         System.out.println("Parrot's name: " + parrot.getName());
