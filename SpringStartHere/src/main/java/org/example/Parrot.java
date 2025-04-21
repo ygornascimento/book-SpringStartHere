@@ -1,8 +1,7 @@
 package org.example;
-import org.springframework.stereotype.Component;
 
 public class Parrot {
-    private String name = "Koko";
+    private String name;
 
     public String getName() {
         return name;

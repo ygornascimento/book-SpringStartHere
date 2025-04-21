@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
+@ComponentScan("org.example")
 public class ProjectConfig {
 
     @Bean
@@ -23,13 +24,5 @@ public class ProjectConfig {
         Parrot parrot = new Parrot();
         parrot.setName("Miki");
         return parrot;
-    }
-
-    @Bean
-    public Person person(@Qualifier("parrot2") Parrot parrot) { //Using @Qualifier annotation, you clearly mark your intention to inject a specific bean from the context.
-        Person person = new Person();
-        person.setName("Ella");
-        person.setParrot(parrot);
-        return person;
     }
 }
