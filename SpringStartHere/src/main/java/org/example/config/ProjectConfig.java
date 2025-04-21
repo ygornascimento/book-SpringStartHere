@@ -25,10 +25,10 @@ public class ProjectConfig {
     }
 
     @Bean
-    public Person person() {
+    public Person person(Parrot parrot2) { //Spring will provide the value of the bean whose name is the same as the name of the parameter we define.
         Person person = new Person();
         person.setName("Ella");
-        person.setParrot(parrot2());
+        person.setParrot(parrot2);
         return person;
     }
 }
