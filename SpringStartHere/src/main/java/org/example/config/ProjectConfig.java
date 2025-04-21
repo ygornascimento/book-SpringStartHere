@@ -10,18 +10,5 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 @ComponentScan(basePackages = "org.example")
 public class ProjectConfig {
-    @Bean
-    public Parrot parrot () {
-        Parrot parrot = new Parrot ();
-        parrot.setName("Koko");
-        return parrot;
-    }
 
-    @Bean
-    public Person person (Parrot parrot ) {
-        Person person = new Person ();
-        person.setName("Ella");
-        person.setParrot (parrot);
-        return person;
-    }
 }

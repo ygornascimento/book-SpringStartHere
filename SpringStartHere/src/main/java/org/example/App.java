@@ -14,10 +14,8 @@ public class App {
         var springContext  = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
         Person person = springContext.getBean(Person.class);
-        Parrot parrot = springContext.getBean(Parrot.class);
 
         System.out.println("Person's name: " + person.getName());
-        System.out.println("Parrot's name: " + parrot.getName());
         System.out.println("Person's parrot: " + person.getParrot());
 
     }
