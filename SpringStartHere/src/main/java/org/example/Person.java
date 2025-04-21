@@ -6,9 +6,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
     private String name = "Ella";
+    private final Parrot parrot; //We can now make the field final to ensure its value cannot be changed after initialization.
 
     @Autowired
-    private Parrot parrot;
+    public Person(Parrot parrot) {
+        this.parrot = parrot;
+    }
 
     public String getName() {
         return name;
@@ -16,9 +19,5 @@ public class Person {
 
     public Parrot getParrot() {
         return parrot;
-    }
-
-    public void setParrot(Parrot parrot) {
-        this.parrot = parrot;
     }
 }
