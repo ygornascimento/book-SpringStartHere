@@ -2,6 +2,7 @@ package org.example.config;
 
 import org.example.Parrot;
 import org.example.Person;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,10 +26,10 @@ public class ProjectConfig {
     }
 
     @Bean
-    public Person person(Parrot parrot2) { //Spring will provide the value of the bean whose name is the same as the name of the parameter we define.
+    public Person person(@Qualifier("parrot2") Parrot parrot) { //Using @Qualifier annotation, you clearly mark your intention to inject a specific bean from the context.
         Person person = new Person();
         person.setName("Ella");
-        person.setParrot(parrot2);
+        person.setParrot(parrot);
         return person;
     }
 }
