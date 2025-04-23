@@ -1,8 +1,6 @@
 package org.example;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class Parrot {
 
     private String name = "Koko";
@@ -20,5 +18,3 @@ public class Parrot {
         return "Parrot : " + name;
     }
 }
-
-//No new changes for 3.4
