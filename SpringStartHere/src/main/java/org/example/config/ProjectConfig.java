@@ -7,9 +7,40 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "org.example") // Telling Spring where to find classes with @Component stereotype annotation.
 public class ProjectConfig {
 
-}
+    /*
+    In this section we discuss the scenario in which Spring needs to inject a value into a parameter or class field/property
+    bus has multiple beans of the same type to choose from.
 
-//No changes for 3.2.3
+    Spring will provide the value of the bean  whose name is the same as the name of the parameter. One way to instruct
+    Spring to provide you a specific instance from its context, when the context contains more than one instance of the
+    same type, is to rely on the name of this instance. Just name the parameter the same as the instance you'd like Spring
+    to provide you.
+
+    **In real-world scenario, its better avoid relaying on the name of the parameter, which could be easily refactored
+    and changed by mistake by another developer.
+    */
+
+    @Bean
+    public Parrot parrot1() {
+        Parrot parrot = new Parrot();
+        parrot.setName("Koko - Parrot 1");
+        return parrot;
+    }
+
+    @Bean
+    public Parrot parrot2() {
+        Parrot parrot = new Parrot();
+        parrot.setName("Miki - Parrot 2");
+        return parrot;
+    }
+
+    @Bean
+    public Person person(Parrot parrot2) { // The name of the parameter matches the name of the bean representing parrot Miki.
+        Person person = new Person();
+        person.setName("Ella");
+        person.setParrot(parrot2);
+        return person;
+    }
+}
