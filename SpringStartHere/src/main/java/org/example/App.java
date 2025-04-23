@@ -9,12 +9,8 @@ public class App {
         var springContext  = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
         Person personInSpringContext = springContext.getBean(Person.class);
-        Parrot parrotInSpringContext = springContext.getBean(Parrot.class);
 
         System.out.println("Person's name: " + personInSpringContext.getName());
-        System.out.println("Parrot's name: " + parrotInSpringContext.getName());
-        System.out.println("Person's parrot: " + personInSpringContext.getParrot()); /* Now, this will return Koko */
+        System.out.println("Person's parrot: " + personInSpringContext.getParrot());
     }
 }
-
-//Nothing changed here in 3.1.2
