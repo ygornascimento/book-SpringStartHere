@@ -15,17 +15,19 @@ public class ProjectConfig {
     }
 
     @Bean
-    public Person person () {
+    public Person person (Parrot parrot) {
         Person person = new Person ();
         person.setName("Ella");
-        person.setParrot(parrot ()); /* We define the relationship between the person bean and the parrot bean
-        by directly calling the method that returns the bean we want to set. This approach doesn't create two instances
-        of parrot because when two methods annotated with @Bean call each other Spring knows you want to create a link
-        between the beans. To check it out, in the Parrot class, just add a constructor like this:
-        public Parrot() {
-            System.out.println("Parrot created");
-        }
-        and you will see that just once "Parrot created" will be printed.
+        person.setParrot(parrot); /* Instead of directly calling the method that defines the bean we wish to refer to,
+        (parrot ()) we add a parameter to the method of the corresponding type of object, and we rely on Spring to
+        provide us a value through that parameter. With this approach, it doesn't matter if the bean we want to refer
+        to is defined with a method annotated with @Bean or using stereotype annotation like @Component.
+
+        1. We instruct Spring to provide a bean from its Context by defining a parameter for the method. Line 18
+        2. We set the value of the person's attribute with the reference Spring provided. Line 21
+
+        We can then use the provided bean (parrot) when creating the second one (person). The result is the has-A
+        relationship between the two beans. The person has-A (Owns) the parrot.
         */
         return person;
     }

@@ -16,3 +16,5 @@ public class App {
         System.out.println("Person's parrot: " + personInSpringContext.getParrot()); /* Now, this will return Koko */
     }
 }
+
+//Nothing changed here in 3.1.2
