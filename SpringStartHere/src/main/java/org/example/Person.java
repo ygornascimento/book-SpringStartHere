@@ -8,11 +8,8 @@ import org.springframework.stereotype.Component;
 of this class: Person. */
 public class Person {
     private String name = "Ella";
-    private final Parrot parrot; //We can now make the field final to ensure its value cannot be changed after initialization.
+    private Parrot parrot;
 
-    @Autowired /* When Spring creates the bean of type Person, it calls the constructor annotated with @Autowired.
-    Spring provides a bean of type Parrot from its Context as value of the parameter. We're using constructor injection
-    over field injection, used in section 3.2.1. */
     public Person(Parrot parrot) {
         this.parrot = parrot;
     }
@@ -27,5 +24,15 @@ public class Person {
 
     public Parrot getParrot() {
         return parrot;
+    }
+
+    @Autowired
+    /*
+    You won’t often find developers applying the approach of using the setter for dependency injection.
+    This approach has more disadvantages than advantages: it’s more challenging to read, it doesn’t allow you to
+    make the field final, and it doesn’t help you in making the testing easier. Even so, I wanted to mention this possibility.
+    */
+    public void setParrot(Parrot parrot) {
+        this.parrot = parrot;
     }
 }
