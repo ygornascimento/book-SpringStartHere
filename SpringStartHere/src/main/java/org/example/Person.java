@@ -8,12 +8,14 @@ import org.springframework.stereotype.Component;
 of this class: Person. */
 public class Person {
     private String name = "Ella";
-    @Autowired
-    /*We instruct Spring to provide a bean from its Context and set it directly as the value of the field, annotated
-    with @Autowired. This way we establish a relationship between the two beans.
-    Using the @Autowired annotation over the field, we instruct Spring to provide a value for that field from its Context.
-    Spring creates the two beans, person and parrot, and injects the parrot object to the field of the bean of type person. */
-    private Parrot parrot;
+    private final Parrot parrot; //We can now make the field final to ensure its value cannot be changed after initialization.
+
+    @Autowired /* When Spring creates the bean of type Person, it calls the constructor annotated with @Autowired.
+    Spring provides a bean of type Parrot from its Context as value of the parameter. We're using constructor injection
+    over field injection, used in section 3.2.1. */
+    public Person(Parrot parrot) {
+        this.parrot = parrot;
+    }
 
     public String getName() {
         return name;
@@ -25,9 +27,5 @@ public class Person {
 
     public Parrot getParrot() {
         return parrot;
-    }
-
-    public void setParrot(Parrot parrot) {
-        this.parrot = parrot;
     }
 }

@@ -11,3 +11,5 @@ import org.springframework.context.annotation.Configuration;
 public class ProjectConfig {
 
 }
+
+//No changes in 3.2.2
