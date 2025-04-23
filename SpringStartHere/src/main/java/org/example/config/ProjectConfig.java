@@ -2,6 +2,7 @@ package org.example.config;
 
 import org.example.Parrot;
 import org.example.Person;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,8 @@ public class ProjectConfig {
 
     **In real-world scenario, its better avoid relaying on the name of the parameter, which could be easily refactored
     and changed by mistake by another developer.
+
+    Another way to express the intention to inject a specific bean is using the @Qualifier annotation.
     */
 
     @Bean
@@ -37,7 +40,9 @@ public class ProjectConfig {
     }
 
     @Bean
-    public Person person(Parrot parrot2) { // The name of the parameter matches the name of the bean representing parrot Miki.
+    public Person person(@Qualifier("parrot2") Parrot parrot2) { /*
+    Using the @Qualifier annotation, you clearly mark your intention to inject a specific bean from the context.
+    */
         Person person = new Person();
         person.setName("Ella");
         person.setParrot(parrot2);
