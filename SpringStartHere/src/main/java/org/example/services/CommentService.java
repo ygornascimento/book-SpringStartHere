@@ -4,9 +4,10 @@ import org.example.model.Comment;
 import org.example.proxies.CommentNotificationProxy;
 import org.example.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component //Spring creates a bean of this class and adds it to its context.
+@Service /* Just for design porposes, this stereotype annotation does the same as the @Component stereotype annotation.
+We use @Service to define this object as a component with the responsibility of service.*/
 public class CommentService {
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy commentNotificationProxy;

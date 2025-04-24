@@ -1,9 +1,10 @@
 package org.example.repositories;
 
 import org.example.model.Comment;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository /* Just for design porposes, this stereotype annotation does the same as the @Component stereotype annotation.
+We use @Repository to define this object as a component with the responsibility of the repository.*/
 public class DBCommentRepository implements CommentRepository {
 
     @Override
