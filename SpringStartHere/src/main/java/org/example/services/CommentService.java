@@ -6,7 +6,7 @@ import org.example.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service /* Just for design porposes, this stereotype annotation does the same as the @Component stereotype annotation.
+@Service /* Just for design purposes, this stereotype annotation does the same as the @Component stereotype annotation.
 We use @Service to define this object as a component with the responsibility of service.*/
 public class CommentService {
     private final CommentRepository commentRepository;
