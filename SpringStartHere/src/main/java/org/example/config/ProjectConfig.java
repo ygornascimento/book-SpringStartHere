@@ -2,11 +2,11 @@ package org.example.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@Configuration // Marks the contiguration class.
-@ComponentScan( /* Tell Spring in which package to search for tha classes annotated with stereotype annotations.
-Observe that the model package is not specified because it doesn't contain classes annotated with stereotype annotations. */
-        basePackages = "org.example.services")
+@Configuration
+@EnableAspectJAutoProxy // Enables the aspects mechanism in our Spring app.
+@ComponentScan(basePackages = {"org.example.services", "org.example.aspects"})
 public class ProjectConfig {
 
 }
