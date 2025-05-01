@@ -9,12 +9,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App {
     public static void main( String[] args ) {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        var commentService = context.getBean(CommentService.class);
 
-        var comment = new Comment();
-        comment.setAuthor("John Doe");
-        comment.setText("Hello World Comment Text");
+        var service = context.getBean(CommentService.class);
 
-        commentService.publishComment(comment);
+        Comment comment = new Comment();
+        comment.setText("Demo comment");
+        comment.setAuthor("Natasha");
+
+        service.publishComment(comment);
     }
 }
