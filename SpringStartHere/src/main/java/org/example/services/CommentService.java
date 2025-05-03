@@ -9,7 +9,8 @@ We use @Service to define this object as a component with the responsibility of 
 public class CommentService {
     private Logger log = Logger.getLogger(CommentService.class.getName());
 
-    public void publishComment(Comment comment) {
+    public String publishComment(Comment comment) {
         log.info("Publishing comment: " + comment.getText());
+        return "SUCCESS";
     }
 }
