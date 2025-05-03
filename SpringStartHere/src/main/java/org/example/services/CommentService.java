@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.aspects.ToLog;
 import org.example.model.Comment;
 import org.springframework.stereotype.Service;
 import java.util.logging.Logger;
@@ -9,8 +10,16 @@ We use @Service to define this object as a component with the responsibility of 
 public class CommentService {
     private Logger log = Logger.getLogger(CommentService.class.getName());
 
-    public String publishComment(Comment comment) {
+    public void publishComment(Comment comment) {
         log.info("Publishing comment: " + comment.getText());
-        return "SUCCESS";
+    }
+
+    @ToLog
+    public void deleteComment(Comment comment) {
+        log.info("Deleting comment: " + comment.getText());
+    }
+
+    public void editComment(Comment comment) {
+        log.info("Editing comment: " + comment.getText());
     }
 }

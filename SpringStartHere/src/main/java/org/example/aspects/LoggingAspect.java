@@ -17,7 +17,7 @@ public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around("execution(* org.example.services.*.*(..))") // Defines which are the intercepted methods
+    @Around("@annotation(ToLog)") // Weaving the aspect to the methods annotated with @ToLog
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         // Obteins the name and parameters of the intercepted method.
         String methodName = joinPoint.getSignature().getName();
