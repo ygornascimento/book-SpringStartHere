@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     @RequestMapping("/home") // We assign the controlle's action to an HTTP request path.
-    public String home(@RequestParam String color, @RequestParam String name, Model page) {
+    public String home(@RequestParam String color, @RequestParam(required = false) String name, Model page) {
         page.addAttribute("username", name); // Adding the data we want the controller to send to the view.
         page.addAttribute("color", color); // The controller passes the color sent by the cliente to the view.
         return "home.html"; // The controller's action returns the view to be rendered into the HTTP response.
