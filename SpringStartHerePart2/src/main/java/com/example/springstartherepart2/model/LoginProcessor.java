@@ -11,8 +11,8 @@ public class LoginProcessor {
 
     private final LoggedUserManagementService loggedUserManagementService;
 
-    private String username = "natalie"; // The bean stores the credentials as attributes.
-    private String password = "1234"; // The bean stores the credentials as attributes.
+    private String username; // The bean stores the credentials as attributes.
+    private String password; // The bean stores the credentials as attributes.
 
     // We auto-wire the LoggedUserManagementService bean in the LoginProcessor class to take care of the authentication logic.
     public LoginProcessor(LoggedUserManagementService loggedUserManagementService) {
@@ -40,6 +40,7 @@ public class LoginProcessor {
         String password = this.getPassword();
 
         boolean loginResult = false;
+
         if ("natalie".equals(username) && "1234".equals(password)) {
             loginResult = true;
             loggedUserManagementService.setUsername(username); // We store the username on the LoggedUserManagementService bean.
