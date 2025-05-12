@@ -4,6 +4,8 @@ import com.example.springstartherepart2.model.Country;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController/* Marking the class as a REST controller to add a bean in the Spring context and also inform the
 dispatcher servlet not to look for a view when this method returns.*/
 public class CountryController {
@@ -12,5 +14,12 @@ public class CountryController {
     public Country france() {
         Country country = Country.of("France", 67);
         return country; //Returning an instance of type Country.
+    }
+
+    @GetMapping("/all")
+    public List<Country> countries() {
+        Country country = Country.of("France", 67);
+        Country country2 = Country.of("Spain", 47);
+        return List.of(country, country2); //Returning a collection in the HTTP Response Body.
     }
 }
