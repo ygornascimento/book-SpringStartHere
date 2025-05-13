@@ -1,6 +1,8 @@
 package com.example.springstartherepart2.controller;
 
 import com.example.springstartherepart2.model.Country;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,9 +13,13 @@ dispatcher servlet not to look for a view when this method returns.*/
 public class CountryController {
 
     @GetMapping("/france") //Mapping the controller's action to the HTTP GET method and /france path.
-    public Country france() {
+    public ResponseEntity<Country> france() {
         Country country = Country.of("France", 67);
-        return country; //Returning an instance of type Country.
+        return ResponseEntity.status(HttpStatus.ACCEPTED) // Changes the HTTP response status to 202 Accepted.
+                .header("continent", "Europe") //Adds three custom headers to the response.
+                .header("capital", "Paris") //Adds three custom headers to the response.
+                .header("favorite_food", "cheese and wine") //Adds three custom headers to the response.
+                .body(country); // Sets the response body.
     }
 
     @GetMapping("/all")
