@@ -19,7 +19,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @PostMapping("/payment")
+//    @PostMapping("/payment")
     /* In some cases, we need to configure a custom response status. The easiest and most
     common way to customize the HTTP response is using the ResponseEntity class. This class provided by Spring allows you to specify the
     response body, status, and the headers on the HTTP response.*/
