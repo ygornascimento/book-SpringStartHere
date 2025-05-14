@@ -11,7 +11,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(NotEnoughMoneyExecption.class)
     public ResponseEntity<ErrorDetails> exceptionNotEnoughMoney() {
         ErrorDetails errorDetails = new ErrorDetails();
-        errorDetails.setMessage("Not enough money to make the payment.");
+        errorDetails.setMessage("Not enough money to make the payment!");
         return ResponseEntity.badRequest().body(errorDetails);
     }
 }

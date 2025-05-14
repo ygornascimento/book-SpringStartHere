@@ -1,7 +1,5 @@
 package com.example.springstartherepart2.controller;
 
-import com.example.springstartherepart2.execptions.NotEnoughMoneyExecption;
-import com.example.springstartherepart2.model.ErrorDetails;
 import com.example.springstartherepart2.model.PaymentDetails;
 import com.example.springstartherepart2.service.PaymentService;
 import org.springframework.http.HttpStatus;
