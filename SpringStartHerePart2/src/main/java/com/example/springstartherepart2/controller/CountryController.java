@@ -13,7 +13,9 @@ dispatcher servlet not to look for a view when this method returns.*/
 public class CountryController {
 
     @GetMapping("/france") //Mapping the controller's action to the HTTP GET method and /france path.
-    public ResponseEntity<Country> france() {
+    public ResponseEntity<Country> france() { /* In some cases, we need to configure a custom response status. The easiest and most
+    common way to customize the HTTP response is using the ResponseEntity class. This class provided by Spring allows you to specify the
+    response body, status, and the headers on the HTTP response.*/
         Country country = Country.of("France", 67);
         return ResponseEntity.status(HttpStatus.ACCEPTED) // Changes the HTTP response status to 202 Accepted.
                 .header("continent", "Europe") //Adds three custom headers to the response.
