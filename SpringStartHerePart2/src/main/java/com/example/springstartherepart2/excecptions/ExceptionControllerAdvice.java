@@ -1,4 +1,4 @@
-package com.example.springstartherepart2.execptions;
+package com.example.springstartherepart2.excecptions;
 
 import com.example.springstartherepart2.model.ErrorDetails;
 import org.springframework.http.ResponseEntity;
