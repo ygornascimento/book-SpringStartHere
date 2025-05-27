@@ -33,6 +33,9 @@ public class TransferService {
 
         // We set the new amount value for the destination account.
         accountRepository.changeAmount(idReceiver, receiverNewAmount);
+
+        // We throw a runtime exception at the end of the service method to simulate a problem that occurred in the transaction.
+        throw new RuntimeException("Oh no! Something went wrong!");
     }
 
     public List<Account> getAllAccounts() {
