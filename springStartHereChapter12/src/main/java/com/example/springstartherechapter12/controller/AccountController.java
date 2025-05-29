@@ -3,10 +3,7 @@ package com.example.springstartherechapter12.controller;
 import com.example.springstartherechapter12.model.Account;
 import com.example.springstartherechapter12.model.TransferRequest;
 import com.example.springstartherechapter12.service.TransferService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +27,14 @@ public class AccountController {
     }
 
     @GetMapping("/accounts")
-    public List<Account> getAllAccounts() {
-        return transferService.getAllAccounts();
+    // We use an optional request parameter to get the name for which we want to return the account details.
+    public Iterable<Account> getAllAccounts(@RequestParam(required = false) String name) {
+        // If no name is provided in the optional request parameter, we return all the account details.
+        if (name == null) {
+            return transferService.getAllAccounts();
+            // If a nanme is provided in the request parameter, we only return the account details for the given name.
+        } else {
+            return transferService.findAccountsByName(name);
+        }
     }
 }

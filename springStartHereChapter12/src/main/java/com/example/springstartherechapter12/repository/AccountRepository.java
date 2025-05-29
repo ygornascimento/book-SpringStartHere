@@ -1,35 +1,20 @@
 package com.example.springstartherechapter12.repository;
 
-import com.example.springstartherechapter12.mapper.AccountRowMapper;
 import com.example.springstartherechapter12.model.Account;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jdbc.repository.query.Modifying;
+import org.springframework.data.jdbc.repository.query.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Repository
-public class AccountRepository {
-    private final JdbcTemplate jdbcTemplate;
+//The first generic type value is the type of the model class representing the table. The second is the type of the primary key field.
+public interface AccountRepository extends CrudRepository<Account, Long> {
+    @Query("SELECT * FROM account WHERE name = :name")
+    List<Account> findAccountsByName(String name);
 
-    public AccountRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public Account findAccountById(long id) {
-        String sql  = "select * from account where id = ?";
-
-        return jdbcTemplate.queryForObject(sql, new AccountRowMapper(), id);
-    }
-
-    public void changeAmount(long ind, BigDecimal amount) {
-        String sql  = "update account set amount = ? where id = ?";
-        jdbcTemplate.update(sql, amount, ind);
-    }
-
-    public List<Account> findAllAccounts() {
-        String sql  = "select * from account";
-
-        return jdbcTemplate.query(sql, new AccountRowMapper());
-    }
+    // We annotate the methods that define operations that change data with the @Modifying annotation.
+    @Modifying
+    @Query("UPDATE account SET amount = :amount WHERE id = :id")
+    void changeAmount(long id, BigDecimal amount);
 }

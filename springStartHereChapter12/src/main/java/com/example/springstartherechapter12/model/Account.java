@@ -1,8 +1,11 @@
 package com.example.springstartherechapter12.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.math.BigDecimal;
 
 public class Account {
+    @Id // We annotate the attribute that models the primary key with the @Id annotation.
     private long id;
     private String name;
     private BigDecimal amount;
